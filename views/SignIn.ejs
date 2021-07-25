@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="<%= assetPath('css/signin.css') %>">
+<div id="container">
+    <form action="/user/create-session" method="POST">
+        <i class="fas fa-envelope animate__animated animate__heartBeat animate__slow animate__delay-1s" style="font-size: 30px;"></i>
+        <input name = "email" type="email" class="m-3" required placeholder="Email">
+        <br>
+        <i class="fa fa-unlock animate__animated animate__heartBeat animate__repeat animate__slow animate__delay-1s" style="font-size: 30px; top: 43%;"></i>
+        <input name = "password" type="password" class="m-3" required placeholder="Password">
+        <br>
+        <button class="m-3 animate__animate animate__flash animate__delay-1s d-inline-block" type="submit"> Sign In </button>
+        <a href="auth/google" style="position: relative; left:42%; filter: brightness(1);"><i class="fa fa-google animate__animated animate__heartBeat animate__repeat animate__slow animate__delay-1s" style="font-size: 30px;"></i></a>
+    </form>
+</div>
+<script src="<%= assetPath('scripts/signin.js') %>"></script>

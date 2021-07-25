@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="<%= assetPath('css/_header.css')%>">
+
+<!-- Top div -->
+<div id="top-div" class="row m-0">
+</div>
+<div id="top-div-partner">
+    <a href="/home" class="position-relative" style="filter: brightness(1);">
+        <div class="pt-2">
+            <i class="fa fa-shield" style="font-size:90px; color: black"></i>
+            <span class="position-absolute head" style="top: 20px; color: white;"> Shield <br></span>
+        </div>
+    </a>
+    <div class="position-relative">
+        <% if(locals.user){ %>
+            <div class="pt-4">
+                <div id="drop-down" class="btn btn-secondary dropdown-toggle">
+                    <%if(user.avatar){ %>
+                        <img src="<%=user.avatar%>" alt="Profile" width="30" height="30" style="border-radius: 100%;">
+                    <% }else{ %>
+                        <img src="/uploads//users/default/avatar" alt="Profile" width="30" height="30" style="border-radius: 100%;">
+                    <% } %>
+                    &nbsp;
+                    <%= locals.user.name.split(' ')[0] %>
+                </div>
+                <div id="drop-down-div">
+                    <a class="dropdown-item" href="/user/profile/<%=locals.user.id%>">Profile</a>
+                    <a class="dropdown-item" href="/home">Home</a>
+                    <a class="dropdown-item" href="/user/sign-out">Sign Out</a>
+                </div>
+            </div>
+        <% }else{ %>    
+            <div style="height: 100%; display: flex;">
+                <span class="text-center hover pr-4 pl-4"><h5 class="position-relative" style="top: 30%;"><a href="/home" class="header-links">Home</a></h5></span>
+                <span class="hover text-center pr-4 pl-4"><h5 class="position-relative" style="top: 30%;"><a class="var-link header-links" href="/user/sign-in">Sign In</a></h5></span>
+            </div>
+        <% } %>
+    </div>
+</div>
+<!-- Top div Ends -->
+<script>
+    $('#drop-down').click(function(){
+        if($("#drop-down-div").css('display') == 'none')
+            $("#drop-down-div").css('display', 'block');
+        else    
+            $("#drop-down-div").css('display', 'none');
+    })
+</script>

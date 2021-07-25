@@ -1,0 +1,1 @@
+var intr;$(".menu-option").mouseenter((function(){var t=$(this).children("i");t.toggleClass("i-float"),intr=setInterval((function(){t.toggleClass("i-float")}),500)})),$(".menu-option").mouseleave((function(){clearInterval(intr),$(this).children("i").removeClass("i-float")}));

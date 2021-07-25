@@ -1,0 +1,49 @@
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#new-post{
+	padding: 70px;
+}
+
+#new-post form{
+	min-width: 470px;
+}
+
+.inputfile + label {
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.textarea{
+    height: 200px;
+}
+
+@media (max-width: 1050px){
+	#new-post{
+		padding-left: 0;
+	}
+}
+
+@media(max-width: 645px){
+	#side-div{
+		display: none;
+	}
+}

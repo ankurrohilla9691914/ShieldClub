@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="<%= assetPath('css/setting.css') %>">
+<div style="width: 100%;">
+    <form id="update" action="/user/updatePassword" method="POST">
+        <h3>Change Password</h3>
+        <input type="password" name="prevPass" class="form-control" placeholder="Current Password" required>
+        <input type="password" name="newPass" class="form-control" placeholder="New Password" required>
+        <input type="password" name="conPass" class="form-control" placeholder="Confirm New Password" required>
+        <button type="submit" class="btn btn-primary" class="form-control">Update</button>
+        <div style="margin-top: 20px;"></div>
+    </form>
+</div>
+<script src="<%= assetPath('scripts/ajax/setting.js') %>"></script>

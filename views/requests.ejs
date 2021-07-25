@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="<%= assetPath('css/request.css') %>">
+<div id="requests" style="width: 100%;">
+    <div>
+        <% if((!locals.requests) || locals.requests.length == 0){ %>
+            <div id="no-req">No Pending Requests</div>
+        <% }else{ %>
+            <h2>Friend Requests</h2>
+            <% for(request of locals.requests){ %>
+                <div id="request" class="shadow bg-white rounded p-3 border-top">
+                    <div class="d-flex">
+                        <div class="mr-3 inline">
+                            <%if(request.fromUser.avatar){ %>
+                                <img src="<%=request.fromUser.avatar%>" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                            <% }else{ %>
+                                <img src="/uploads//users/default/avatar" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                            <% } %>
+                        </div>
+                        <a href="/user/profile/<%= request.fromUser._id %>" class="link-hover-underline mt-2" style="color: black; font-weight: 600;"><%= request.fromUser.name %></a>
+                    </div>
+                    <div style="display: flex;">
+                        <a class="decline mr-1" href="/user/deleteRequest/<%=request.fromUser._id%>">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                        <a class="accept" href="/user/modify-friendship/<%= request.fromUser._id %>">
+                            <button class="btn btn-success">Accept</button>
+                        </a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</div>
+<script src="<%= assetPath('scripts/ajax/request.js') %>"></script>
+<script src="<%= assetPath('scripts/request.js') %>"></script>

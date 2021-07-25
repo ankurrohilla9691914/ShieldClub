@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="<%= assetPath('css/signup.css') %>">
+<div id="container">
+    <form id="create-user" action="/user/create" method="POST">
+        <input name="name" type="text" required placeholder="Full Name">
+        <br>
+        <input name="password" type="password" required placeholder="Password">
+        <br>
+        <input name="cpassword" type="password" required placeholder="Confirm Password">
+        <br>
+        <input id="otp" name="otp" type="number" required placeholder="OTP">
+        <br>
+        <div class="alert alert-danger" role="alert" style="width: 20%; margin-left: 43%; text-align: center;"></div>
+        <input id="sent-email" name="email" type="email" required hidden readonly>
+        <button id="signUp-button" type="submit"> Sign Up </button>
+    </form>
+    <form id="otp-form" action="/user/sendOTP" method="POST">
+        <input name="email" type="email" required placeholder="Email">
+        <button type="submit" style="font-size: 15px;">Generate OTP</button>
+    </form>
+    <br>
+    <a href="auth/google" style="position: relative; left: 43%; color: white; filter: brightness(1);"><i class="fa fa-google animate__animated animate__heartBeat animate__repeat animate__slow animate__delay-1s" style="font-size: 30px; font-weight: 900;"></i></a>
+</div>
+<script src="<%= assetPath('scripts/signup.js') %>"></script>
+<script src="<%= assetPath('scripts/ajax/signup.js') %>"></script>

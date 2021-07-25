@@ -1,0 +1,103 @@
+html{
+    height: 100%;
+}
+body{
+    background-size: 100% 100%;
+    min-height: 100%;
+    position: relative;
+}
+#container{
+    background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700445270.jpg');
+    opacity: 1;
+    position: absolute;
+    height: 100%;
+    background-size: cover;
+    top: 0;
+    min-width: 100%;
+    padding-top: 350px;
+    z-index: 1;
+}
+form{
+    position: relative;
+    opacity: 1;
+}
+
+input{
+    min-width: 285px;
+    padding: 10px;
+    background-color: lightgray;
+    /* color: white; */
+    border: 0;
+    position: relative;
+    left: 42%;
+    /* border-radius: 8px; */
+    border-bottom: 4px yellow solid;
+    font-weight: bold;
+    opacity: 0.7;
+    font-size: large;
+    width: 10%;
+    transition: width .3s ease-in-out;
+}
+
+#top-div-partner{
+    background-image: none;
+}
+
+.click-input{
+    width: 20%;
+}
+button{
+    padding: 12px 20px 14px 20px;
+    background-color: lightgray;
+    border: 0;
+    position: relative;
+    left: 42%;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 30px;
+    background-color: transparent;
+    transition: all .2s ease-in-out;
+    transition-property: background-color, color;
+}
+
+input:valid{
+    border-bottom: 4px lightgreen solid;
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0.808);
+    color: rgb(187, 96, 59);
+}
+
+form i{
+    position: absolute;
+    left: 38.3%;
+    color: white;
+    top: 9%;
+}
+
+.button-flash{
+    background-color: white;
+    color: rgb(187, 96, 59);
+}
+
+/* Side bar */
+#side-div{
+    display: none;
+}
+
+@media(min-width: 900px){
+    input, button{
+        left: 40%;
+    }
+}
+
+@media (max-width: 800px){
+    input, button{
+        left: 25%;
+    }
+    form i{
+        left: 22%;
+    }
+}

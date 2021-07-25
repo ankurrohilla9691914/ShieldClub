@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="<%= assetPath('css/_sideDiv.css') %>">
+<div id="side-menu"> 
+    <div id="stick">
+        <a href="/home">
+            <div class="menu-option">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <div class="hidden-tag text-center text-monospace">
+                Feed
+            </div>
+        </a>
+        <a href="/post/new-post">
+            <div class="menu-option">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <div class="hidden-tag text-center tex-monospace">
+                New Post
+            </div>
+        </a>
+        <a href="/user/search">
+            <div class="menu-option">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="hidden-tag text-center text-monospace">
+                Search
+            </div>
+        </a>
+        <a href="/user/myrequests">
+            <div class="menu-option" style="position: relative;">
+                <i class="fas fa-user-friends"></i>
+                <% if(locals.user && locals.user.pendingRequests.length > 0){ %>
+                    <div id="request-count"><%= locals.user.pendingRequests.length %></div>
+                <% } %>
+            </div>
+            <div class="hidden-tag text-center text-monospace">
+                Requests
+            </div>
+        </a>
+        <a href="/user/setting">
+            <div id="setting"  class="menu-option">
+                <i id="cog" class="fas fa-cog"></i>
+            </div>
+            <div class="hidden-tag text-center text-monospace">
+                Settings
+            </div>
+        </a>
+    </div>
+</div>
+<script src="<%= assetPath('scripts/_sideDiv.js') %>"></script>

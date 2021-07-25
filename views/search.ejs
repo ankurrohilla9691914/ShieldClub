@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="<%= assetPath('css/search.css') %>">
+<div style="text-align: center;" class="mt-5">
+    <div>
+        <form action="/user/searchUser" method="POST">
+            <input type="text" id="name" name="name" class="form-control" style="width: 35%; display: inline;" placeholder="Search Name">
+            <button type="submit" style="border: 0; background-color: rgb(231, 231, 231);"><i class="fas fa-search" style="font-size: 25px; color: #007bff;"></i></button>
+        </form>
+    </div>
+    <% if(locals.searchedUsers){ %>
+        <div id="result" style="margin: auto; margin-top: 6%;">
+            <% for(user of Object.create(locals.searchedUsers)){ %>
+                <a href="/user/profile/<%= user._id %>" class="shadow bg-white rounded p-3 m-2" style="position: relative; width: 45%; height: 120px; display: flex;">
+                    <div class="d-flex" style="width: 83%; margin-top: 30px;">
+                        <div class="mr-3">
+                            <%if(user.avatar){ %>
+                                <img src="<%=user.avatar%>" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                            <% }else{ %>
+                                <img src="/uploads//users/default/avatar" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                            <% } %>
+                        </div>
+                        <div style="text-align: left;"><%= user.name %></div>
+                        
+                    </div>
+                    <div style="padding-top: 25px;">
+                        <button class="btn btn-info" style="font-size: 1rem;">Chat</button>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    <% } %>
+</div>
+<script>
+    $($('.menu-option')[2]).css('background-color', "#0303d6");
+
+    $($("#side-menu #stick").children('a')[2]).click(function(event){
+        event.preventDefault();
+    });
+</script>

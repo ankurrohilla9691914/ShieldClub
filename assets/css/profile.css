@@ -1,0 +1,177 @@
+#profile img{
+    border-radius: 50%;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#all-posts > div{
+    /* border: 1px gray solid; */
+    background-color: white;
+    border-radius: 5px;
+}
+.inline{
+    display: inline-block;
+}
+
+#all-posts{
+    position: relative;
+    width: 40%;
+    margin: auto;
+    min-width: 573px;
+}
+
+.delete{
+    overflow: hidden;
+    padding-right: 0;
+    width: 0;
+    transition: width 200ms linear;
+    transition-property: width, padding-right;
+}
+.comment:hover div .delete{
+    padding-right: 24px;
+    width: 60px;
+}
+.com-text{
+    background-color: rgba(197, 191, 191, 0.5);
+    border: 0;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+button{
+    background-color: transparent;
+    border: 0;
+}
+
+.show-text{
+    overflow: hidden;
+    width: 0;
+    margin-left: 5px;
+    transition: width 200ms linear;
+}
+.pop-comment:hover .show-text{
+    width: 70px;
+}
+
+.like:hover .show-text{
+    width: 40px;
+}
+
+.red-like{
+    color: red;
+}
+
+.post-comments{
+    display: none;
+}
+
+#friends > div{
+    padding: 10%;
+    position: sticky;
+    top: 0;
+}
+
+/* Chat Box */
+
+#chat-box{
+    position: fixed;
+    bottom: 0;
+    right: 10%;
+    height: 350px;
+    width: 300px;
+    border: 0px black solid;
+    background-color:rgb(231, 231, 231);
+    display: none;
+    border-radius: 5px 5px 0 0;
+}
+
+ul li div{
+    background-color: orange;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+ul li {
+    padding: 2px 0 2px 0;
+    width: auto;
+}
+
+#messages{
+    padding-right: 5px;
+    padding-left: 10px;
+}
+
+#new-message{
+    text-align: center;
+    font-size: 13px;
+}
+
+#seen{
+    text-align: right;
+    font-size: 12px;
+    margin-top: -4px;
+}
+
+#message-container::-webkit-scrollbar{
+    width: 5px;
+}
+
+/* End Chat Box */
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: rgb(172, 165, 165);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(87, 81, 81);
+    border-radius: 0px;
+}
+
+#profile > form > input{
+    margin: 10px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+
+@media (max-width: 650px){
+    #side-div{
+        display: none;
+    }
+    #all-posts{
+        margin-left: 0%;
+        min-width: 450px;
+    }
+}

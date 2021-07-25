@@ -1,0 +1,142 @@
+a:hover{
+    text-decoration: none;
+}
+
+#posts{
+    width: 60%;
+} 
+
+.hover:hover, .hover:hover a{
+    background-color: #0303d6;
+    filter: brightness(1);
+}
+
+
+.inline{
+    display: inline-block;
+}
+
+#all-posts{
+    width: 50%;
+    margin: auto;
+    position: relative;
+    min-width: 450px;
+}
+
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+.delete{
+    overflow: hidden;
+    padding-right: 0;
+    width: 0;
+    transition: width 200ms linear;
+    transition-property: width, padding-right;
+}
+
+.comment:hover div .delete{
+    padding-right: 24px;
+    width: 60px;
+}
+
+input[type='text']{
+    background-color: rgba(197, 191, 191, 0.5);
+    border: 0;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+button{
+    background-color: transparent;
+    border: 0;
+}
+
+.show-text{
+    overflow: hidden;
+    width: 0;
+    margin-left: 5px;
+    transition: width 200ms linear;
+}
+
+.pop-comment:hover .show-text{
+    width: 70px;
+}
+
+.like:hover .show-text{
+    width: 40px;
+}
+
+.red-like{
+    color: red;
+}
+
+.post-comments{
+    display: none;
+}
+
+
+/* Friends Bar */
+#friends{
+    border-left: 1px lightgray solid;
+    min-width: 250px;
+    width: 15%;
+    /* position: relative; */
+}
+#friends > div{
+    padding: 10%;
+    padding-right: 0;
+    position: sticky;
+    top: 0;
+}
+/* Friends Ends */
+
+.white{
+    color: white;
+    filter: brightness(1);
+}
+
+@media (max-width: 1500px){
+    #all-posts{
+        width: 65%;
+    }
+}
+
+@media (max-width: 1230px){
+    #all-posts{
+        width: 80%;
+    }
+}
+
+@media (max-width: 1150px){
+    #all-posts{
+        width: 100%;
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 900px){
+    #friends{
+        display: none;
+    }
+}
+
+@media (max-width: 650px){
+    #side-div{
+        display: none;
+    }
+    #all-posts{
+        margin-left: 0%;
+        min-width: 450px;
+    }
+}
+
+
+@media (orientation: portrait){
+    .delete{
+        padding-right: 24px;
+        width: 60px;
+    }
+}

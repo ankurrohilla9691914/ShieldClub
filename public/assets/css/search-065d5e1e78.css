@@ -1,0 +1,1 @@
+#result a:hover{text-decoration:none}#result a{font-weight:600;color:#000;min-width:263px;text-align:center}#result{width:70%;display:flex;flex-wrap:wrap;justify-content:center}@media (max-width:1000px){#side-div{display:none}#result{width:100%}}@media (max-width:730px){#result a{min-width:550px}}@media (max-width:600px){#result a{min-width:450px}}

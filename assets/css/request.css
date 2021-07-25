@@ -1,0 +1,35 @@
+#no-req{
+    font-size: xx-large ;
+    color: rgb(99, 91, 91);
+    text-shadow: -1.5px -1.5px rgb(168, 161, 161);
+    margin: auto;
+    margin-top: 20%;
+    text-align: center;
+    width: 400px;
+}
+
+#request{
+    display: flex;
+    justify-content: space-between;
+    min-width: 370px;
+}
+
+#requests > div{
+    margin: auto;
+    padding-top: 150px;
+    min-width: 370px;
+    max-width: 655px;
+    padding-bottom: 150px;
+}
+
+@media (max-width: 1000px){
+    #side-div{
+        display: none;
+    }
+}
+
+@media (max-width: 900px){
+    #requests > div{
+        min-width: 500px;
+    }
+}

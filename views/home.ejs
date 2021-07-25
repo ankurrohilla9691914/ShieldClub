@@ -1,0 +1,208 @@
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
+<div class="d-flex" style="justify-content: space-between;">
+    <div id="posts" class="p-4" style="width: 100%;">
+        <% if(!locals.posts || locals.posts.length == 0){ %>
+            <div style="font-size: 40px; margin: auto; margin-top: 200px; text-align: center;">
+                <% if(locals.user){ %>
+                    Make some friends
+                <% }else{ %>
+                    Create an Account
+                <% } %>
+                <i class="far fa-smile"></i>
+            </div>
+        <% } %>
+        <div id="all-posts">
+            <%if(locals.posts){ for(let post of locals.posts){%>
+                <div id="post-<%=post.id%>" class="shadow mb-3 bg-white rounded">
+                    <div class="post-header pt-3 pl-3 d-flex">
+                        <div class="m-2">
+                            <%if(post.user.avatar){ %>
+                                <img src="<%=post.user.avatar%>" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                            <% }else{ %>
+                                <img src="/uploads//users/default/avatar" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                            <% } %>
+                        </div>
+                        <div class="d-flex" style="width: 100%; justify-content: space-between;">
+                            <div class="post-user-name pt-1 pl-2">
+                                <div class="" style="font-weight: 500;">
+                                    <%= post.user.name %>
+                                </div>
+                                <div style="font-size: 14px;">
+                                    <%= time(post.createdAt) %>
+                                </div>
+                            </div>
+                            <% if(locals.user && (locals.user.id == post.user.id || locals.user.email == locals.admin)){ %>
+                                <div class="pr-3" data-toggle="modal" data-target="#exampleModal-<%=post.id%>">
+                                    <button class="btn btn-light">Delete</button> 
+                                    
+                                </div>
+                                  <!-- Modal -->
+                                <div class="modal" id="exampleModal-<%=post.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" style="top: 40%">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="">Delete Post</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            This post will be deleted permanently.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a class="ajax-delete white" href="post/delete/<%=post.id%>" style="font-size: 15px;">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="ml-4 mb-3">
+                            <%= post.content %>
+                        </div>
+                        <% if(post.post){%>
+                            <img src="<%=post.post%>" alt="Post Pic" width="100%" height="500px">
+                            <br>
+                        <% } %>
+                    </div>
+                    <% if(locals.user){ %>
+                        <div class="d-flex border-bottom border-top response-box">
+                            <a href="/like/toggle/?id=<%=post._id%>&type=Post" class="white toggle-like" style="width: 50%; color: black;">
+                                <div class="like text-center pt-3 pb-3 d-flex" style="height: 100%; justify-content: center;">
+                                    <% let liked =  post.likes.find(o => o.user == locals.user.id);%>
+                                    <% if(liked){ %>
+                                        <i class="fas fa-heart red-like animate__animated animate__bounceIn" data-like='false' style="font-size: 25px;"></i>
+                                    <% }else{ %>
+                                    <i class="far fa-heart" data-like='false' style="font-size: 25px;"></i>
+                                    <% } %>
+                                    &nbsp 
+                                    <div class="show-text inline">
+                                        Like
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="pop-comment text-center pt-3 pb-3 border-left d-flex" style="width: 50%; height: 100%; justify-content: center;">
+                                <i class="far fa-comment-dots" style="font-size: 25px;"></i>
+                                <div class="toggle-comment" data-comments="<%= post.comments.length %>" style="font-weight: 700;">(<%= post.comments.length%>)</div>
+                                <div class="show-text inline">
+                                    Comment
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <div class="like-count p-2 pl-4 border-bottom">
+                        <div data-likes="<%=post.likes.length%>">
+                            <%= post.likes.length%> Likes
+                        </div>
+                    </div>
+                    <div class='all-comments'>
+                        <% for(comment of post.comments){ %>
+                            <div id="comment-<%=comment.id%>" class="comment">
+                                <div class=" pl-3 pb-1 d-flex">
+                                    <div class="m-2">
+                                        <%if(comment.user.avatar){ %>
+                                            <img src="<%=comment.user.avatar%>" alt="Profile" width="30" height="30" style="border-radius: 100%;">
+                                        <% }else{ %>
+                                            <img src="/uploads//users/default/avatar" alt="Profile" width="30" height="30" style="border-radius: 100%;">
+                                        <% } %>
+                                    </div>
+                                    <div class="d-flex" style="width: 100%; justify-content: space-between;">
+                                        <div class="post-user-name pt-1 pl-2" style="width: 84%;">
+                                            <div class="" style="font-weight: 500;">
+                                                <%= comment.user.name %>
+                                                <span class="" style="font-size: 13px; color: grey;"><%= time(comment.createdAt)%></span>
+                                            </div>
+                                            <div style="display: inline-flex; width: 100%; justify-content: space-between;">
+                                                <div style="display: flex;">
+                                                    <%= comment.comment %>
+                                                    <% if(locals.user){ %>
+                                                    <a href="/like/toggle/?id=<%=comment._id%>&type=Comment" style="font-size: 15px;" class="toggle-like like-com pl-3">
+                                                        <% let likedc =  comment.likes.find(o => o.user == locals.user.id);%>
+                                                        <% if(likedc){ %>
+                                                            <div>Unlike</div>
+                                                        <% }else{ %>
+                                                            <div>Like</div>
+                                                        <% } %>
+                                                    </a>
+                                                    <% } %>
+                                                </div>
+                                                <div class="pr-3 like-count">
+                                                    <div data-likes="<%=comment.likes.length%>">
+                                                        <%= comment.likes.length %> Likes
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% if( locals.user && (locals.user.id == comment.user.id || locals.user.id == post.user.id || locals.user.email == locals.admin) ){ %>
+                                            <div class="delete">
+                                                <a href="comment/delete/<%= comment.id%>" style="font-size: 15px;">Delete</a>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                    <% if(locals.user){ %>
+                    <div class="post-comments mt-2 pb-4 pl-3">
+                        <div class="m-2" style="display: inline-block;">
+                            <%if(locals.user.avatar){ %>
+                                <img src="<%=locals.user.avatar%>" alt="Profile" width="30" height="30" style="border-radius: 100%;">
+                            <% }else{ %>
+                                <img src="/uploads//users/default/avatar" alt="Profile" width="30" height="30" style="border-radius: 100%;">
+                            <% } %>
+                        </div>
+                        <form action="comment/create" method="POST" class="d-inline-block">
+                            <input name="comment" type="text" placeholder="Comment..." required>
+                            <input type="hidden" name="postid" value="<%= post._id%>">
+                            <button type="submit" class="press"><i class="fas fa-paper-plane" style="color: blue; font-size: 25px;"></i></button>
+                        </form>
+                    </div>
+                    <% } %>
+                </div>
+            <% }} %>
+        </div>
+    </div>
+    <div id="friends" style="width: 15%;">
+        <div>
+            <div>
+                <%  if(locals.user){ %>
+                    <h4>Friends</h4>
+                    <%for(let useri of locals.user.friends){ %>
+                        <div class="p-2 d-flex" style="justify-content: space-between;">
+                            <div class="d-flex">
+                                <div class="mr-3 inline">
+                                    <%if(useri.avatar){ %>
+                                        <img src="<%=useri.avatar%>" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                                    <% }else{ %>
+                                        <img src="/uploads//users/default/avatar" alt="Profile" width="40" height="40" style="border-radius: 100%;">
+                                    <% } %>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <a href="/user/profile/<%= useri._id %>" class="link-hover-underline" style="color: black;"><%= useri.name %></a>
+                                </div>
+                            </div>
+                            <div style="padding-top: 5px; color: grey; font-size: 15px; min-width: 30px;">
+                                <% let ship = locals.friendships.find(o => o.toUser == useri.id) || locals.friendships.find(o => o.fromUser == useri.id); %>
+                                <% if(ship.newMessages.length != 0 && ship.newMessages[0].fromUser != locals.user.id){ %>
+                                    <i class="fas fa-comment-alt"></i>
+                                    <%= ship.newMessages.length %>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="<%= assetPath('scripts/home.js')%>"></script>
+<script src="<%= assetPath('scripts/ajax/home.js') %>"></script>

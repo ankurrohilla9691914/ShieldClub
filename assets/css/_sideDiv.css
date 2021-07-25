@@ -1,0 +1,74 @@
+#side-menu{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #04044e, #000080, #000080);
+    margin: 0;
+}
+
+.menu-option{
+    text-align: center;
+    width: 100%;
+    padding: 20%;
+    margin-bottom: 65%;
+}
+
+#side-menu #stick a{
+    width: 1000px;
+    height: 1000px;
+    position: relative;
+}
+
+i{
+    transition: transform 400ms linear;
+}
+.i-float{
+    transform: scale(1.2);
+}
+
+#setting:hover #cog{
+    transform: rotateZ(75deg);
+}
+
+
+.hidden-tag{
+    position: absolute;
+    right: 0;
+    width: 250%;
+    height: 100%;
+    left: 0;
+    background-color: red;
+    z-index: -1;
+    color: white;
+    display: none;
+    font-size: 30px;
+    padding-top: 15px;
+    transition: right 200ms linear;
+    transition-property: right, background-color, z-index;
+}
+
+a:hover .hidden-tag{
+    right: -250%;
+    z-index: 1;
+    background-color: #0303d6;
+}
+
+#request-count{
+    position: absolute;
+    top: 15%;
+    color: white;
+    background-color: red;
+    padding: 0 6px 0 6px;
+    border-radius: 20px;
+    font-weight: 700;
+    left: 65%;
+}
+
+#stick{
+    position: sticky;
+    padding-top: 30%;
+    top: 0;
+}
+
+#stick a > div > i{
+    font-size: 40px; color: white;
+}
